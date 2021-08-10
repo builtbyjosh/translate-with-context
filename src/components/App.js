@@ -1,12 +1,21 @@
 import React, { Component } from 'react'
 import UserCreate from './UserCreate'
 import LanguageContext from '../contexts/LanguageContext'
+import ColorContext from '../contexts/ColorContext'
 
  class App extends Component {
-  state = {language: 'english'}
+  state = {
+    language: 'english',
+    color: 'red'
+  }
 
   onLanguageChange = (language) => {
     this.setState({ language })
+    this.onColorSelect()
+  }
+
+  onColorSelect = () => {
+    this.state.language === 'english' ? this.setState({color: 'primary'}) : this.setState({color: 'red'})
   }
 
   render() {
@@ -18,7 +27,9 @@ import LanguageContext from '../contexts/LanguageContext'
           <i className="flag nl" onClick={() => this.onLanguageChange('dutch')} />
         </div>
         <LanguageContext.Provider value={this.state.language}>
-          <UserCreate />
+          <ColorContext.Provider value={this.state.color}>
+            <UserCreate />
+          </ColorContext.Provider>          
         </LanguageContext.Provider>
         
       </div>
