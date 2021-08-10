@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import UserCreate from './UserCreate'
 import LanguageContext from '../contexts/LanguageContext'
-import { language } from 'language-tags'
 
  class App extends Component {
   state = {language: 'english'}
